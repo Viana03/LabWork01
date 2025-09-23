@@ -61,6 +61,20 @@ int main(int argc, char *argv[]) {
 		}
 	}
 
+	int binSize = 1;
+	if (argc >= 4) {
+		try {
+			binSize = stoi(argv[argc-3]);
+			if (binSize < 1 || (binSize & (binSize - 1)) != 0) {
+				cerr << "Error: binSize must be a power of 2 (1, 2, 4, 8, ...)\n";
+				return 1;
+			}
+		} catch(exception &e) {
+			cerr << "Error: invalid binSize\n";
+			return 1;
+		}
+	}
+
 	size_t nFrames;
 	vector<short> samples(FRAMES_BUFFER_SIZE * sndFile.channels());
 	WAVHist hist { sndFile };
@@ -69,13 +83,24 @@ int main(int argc, char *argv[]) {
 		hist.update(samples);
 	}
 
-	if (mode == "mid"){
-		hist.dumpMid();
-	}else if (mode == "side"){
-		hist.dumpSide();
+	if (binSize > 1) {
+		if (mode == "mid"){
+			hist.dumpCoarseMid();
+		} else if (mode == "side"){
+			hist.dumpCoarseSide();
+		} else {
+			hist.dumpCoarse(channel);
+		}
 	}else{
-		hist.dump(channel);
+		if (mode == "mid"){
+			hist.dumpMid();
+		}else if (mode == "side"){
+			hist.dumpSide();
+		}else{
+			hist.dump(channel);
+		}
 	}
+	
 
 	return 0;
 }
