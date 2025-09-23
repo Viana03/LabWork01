@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/viana/Desktop/MECT/1ano/IC/LabWork01/bin/wav_dct"
-  "/home/viana/Desktop/MECT/1ano/IC/LabWork01/bin/wav_dct.pdb"
+  "/home/luisbfsousa/mect/IC/LabWork01/bin/wav_dct"
+  "/home/luisbfsousa/mect/IC/LabWork01/bin/wav_dct.pdb"
   "CMakeFiles/wav_dct.dir/wav_dct.cpp.o"
   "CMakeFiles/wav_dct.dir/wav_dct.cpp.o.d"
 )

@@ -8,11 +8,15 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/viana/Desktop/MECT/1ano/IC/LabWork01/src/wav_dct.cpp" "CMakeFiles/wav_dct.dir/wav_dct.cpp.o" "gcc" "CMakeFiles/wav_dct.dir/wav_dct.cpp.o.d"
+  "/home/luisbfsousa/mect/IC/LabWork01/src/wav_dct.cpp" "CMakeFiles/wav_dct.dir/wav_dct.cpp.o" "gcc" "CMakeFiles/wav_dct.dir/wav_dct.cpp.o.d"
   )
 
-# Targets to which this target links.
-set(CMAKE_TARGET_LINKED_INFO_FILES
+# Targets to which this target links which contain Fortran sources.
+set(CMAKE_Fortran_TARGET_LINKED_INFO_FILES
+  )
+
+# Targets to which this target links which contain Fortran sources.
+set(CMAKE_Fortran_TARGET_FORWARD_LINKED_INFO_FILES
   )
 
 # Fortran module output directory.

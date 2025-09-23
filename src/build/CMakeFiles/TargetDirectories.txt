@@ -1,5 +1,5 @@
-/home/viana/Desktop/MECT/1ano/IC/LabWork01/src/build/CMakeFiles/wav_cp.dir
-/home/viana/Desktop/MECT/1ano/IC/LabWork01/src/build/CMakeFiles/wav_hist.dir
-/home/viana/Desktop/MECT/1ano/IC/LabWork01/src/build/CMakeFiles/wav_dct.dir
-/home/viana/Desktop/MECT/1ano/IC/LabWork01/src/build/CMakeFiles/edit_cache.dir
-/home/viana/Desktop/MECT/1ano/IC/LabWork01/src/build/CMakeFiles/rebuild_cache.dir
+/home/luisbfsousa/mect/IC/LabWork01/src/build/CMakeFiles/wav_cp.dir
+/home/luisbfsousa/mect/IC/LabWork01/src/build/CMakeFiles/wav_hist.dir
+/home/luisbfsousa/mect/IC/LabWork01/src/build/CMakeFiles/wav_dct.dir
+/home/luisbfsousa/mect/IC/LabWork01/src/build/CMakeFiles/edit_cache.dir
+/home/luisbfsousa/mect/IC/LabWork01/src/build/CMakeFiles/rebuild_cache.dir

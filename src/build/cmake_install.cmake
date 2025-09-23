@@ -1,4 +1,4 @@
-# Install script for directory: /home/viana/Desktop/MECT/1ano/IC/LabWork01/src
+# Install script for directory: /home/luisbfsousa/mect/IC/LabWork01/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/viana/Desktop/MECT/1ano/IC/LabWork01/src/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/luisbfsousa/mect/IC/LabWork01/src/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
