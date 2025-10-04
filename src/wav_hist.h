@@ -46,14 +46,15 @@ class WAVHist {
 	}
 
 	void update(const std::vector<short>& samples) {
-		size_t n { };
+		size_t n {0};
 		
 		for(auto s : samples){
-			counts[n++ % counts.size()][s]++;
+            size_t ch = n % counts.size();
+            counts[ch][s]++;
 
-			short coarseValue = (s / binSize) * binSize;
-			coarseCounts[n % counts.size()][coarseValue]++;
-			n++;
+            short coarseValue = (s / binSize) * binSize;
+            coarseCounts[ch][coarseValue]++;
+            n++;
 		}
 			
 			
