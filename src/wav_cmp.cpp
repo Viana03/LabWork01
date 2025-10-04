@@ -48,10 +48,6 @@ int main(int argc, char *argv[]) {
         cerr << "Error: files must have the same number of channels\n";
         return 1;
     }
-	if (sndFileOg.frames() != sndFileMod.frames()) {
-        cerr << "Error: files must have the same number of frames channels\n";
-        return 1;
-    }
 
 	int channels = sndFileOg.channels();
 	vector<short> samplesOg(FRAMES_BUFFER_SIZE * sndFileOg.channels());
@@ -90,7 +86,7 @@ int main(int argc, char *argv[]) {
     for (int n = 0; n < channels; ++n)
         avgMSE += mse[n] / samples;
     avgMSE /= channels;
-    cout << "Average MSE: " << avgMSE << endl;
+    cout << "Average MSE: " << avgMSE << "\n\n";
 
 	for (int n = 0; n < channels; ++n)
     	cout << "Channel " << n << " Max Abs Error (L∞): " << maxAbsError[n] << endl;
@@ -98,7 +94,7 @@ int main(int argc, char *argv[]) {
 	for (int n = 0; n < channels; ++n)
 		avgMaxAbsError += maxAbsError[n];
 	avgMaxAbsError /= channels;
-	cout << "Average Max Abs Error (L∞): " << avgMaxAbsError << endl;
+	cout << "Average Max Abs Error (L∞): " << avgMaxAbsError << "\n\n";
 
 	for (int n = 0; n < channels; ++n) {
 		double snr = 10.0 * log10(signalPower[n] / (noisePower[n] + 1e-12));
