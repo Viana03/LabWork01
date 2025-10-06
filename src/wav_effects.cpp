@@ -1,4 +1,5 @@
 // PERGUNTAR AO STOR SE É SUPOSTO SER MONO OU STEREO
+// É STEREOOOOOOO
 
 #include <iostream>
 #include <vector>
@@ -42,6 +43,7 @@ void applyMultipleEchoes(vector<short>& samples, float initial_delay, int num_ec
 }
 
 void applyAmplitudeModulation(vector<short>& samples, float frequency, float depth, int sampleRate) {
+    // Amplitude Modulation: y(n) = x(n) * (1 + depth * sin(2 * pi * f * t))
     for (size_t i = 0; i < samples.size(); i++) {
         float time = static_cast<float>(i) / sampleRate;
         float modulation = 1.0f + depth * sin(2.0f * M_PI * frequency * time);
@@ -50,8 +52,8 @@ void applyAmplitudeModulation(vector<short>& samples, float frequency, float dep
     }
 }
 
-void applyTimeVaryingDelay(vector<short>& samples, float max_delay, float lfo_freq, 
-                          int sampleRate) {
+void applyTimeVaryingDelay(vector<short>& samples, float max_delay, float lfo_freq, int sampleRate) {
+    // Time-Varying Delay: y(n) = x(n) + 0.3 * x(n - d(n)) [where d(n) varies with LFO]
     vector<short> original = samples;
     int max_delay_samples = static_cast<int>(max_delay * sampleRate);
     
