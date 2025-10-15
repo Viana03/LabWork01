@@ -38,3 +38,6 @@ add_executable (bin2text bin2text.cpp $<TARGET_OBJECTS:Common>)
 
 add_executable(wav_quant_enc wav_quant_enc.cpp $<TARGET_OBJECTS:Common>)
 target_link_libraries(wav_quant_enc sndfile)
+
+add_executable(dct_encoder dct_encoder.cpp $<TARGET_OBJECTS:Common>)
+target_link_libraries(dct_encoder sndfile fftw3)
