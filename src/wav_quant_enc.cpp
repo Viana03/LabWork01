@@ -51,9 +51,9 @@ int main(int argc, char *argv[]) {
 
     size_t nFrames;
     while((nFrames = sfhIn.readf(samples.data(), FRAMES_BUFFER_SIZE))) {
-        samples.resize(nFrames * sfhIn.channels());
-  
-        for(size_t i = 0; i < nFrames * sfhIn.channels(); i++) {
+        size_t total_samples = nFrames * sfhIn.channels();
+
+        for(size_t i = 0; i < total_samples; i++) {
 
             uint16_t unsigned_quantized = samples[i] + 32768;
             uint16_t bits_to_write = (unsigned_quantized) >> bits_to_remove;
