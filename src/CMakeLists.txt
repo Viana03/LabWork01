@@ -44,3 +44,9 @@ target_link_libraries(wav_quant_dec sndfile)
 
 add_executable(dct_encoder dct_encoder.cpp $<TARGET_OBJECTS:Common>)
 target_link_libraries(dct_encoder sndfile fftw3)
+
+add_executable(dct_decoder dct_decoder.cpp $<TARGET_OBJECTS:Common>)
+target_link_libraries(dct_decoder sndfile)
+
+add_executable(wav_stereo2mono wav_stereo2mono.cpp)
+target_link_libraries(wav_stereo2mono sndfile)
