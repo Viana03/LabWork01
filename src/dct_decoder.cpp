@@ -8,7 +8,6 @@
 
 using namespace std;
 
-// Inverse DCT function
 vector<short> idct(const vector<double>& dct_coeffs, int block_size) {
     vector<short> result(block_size);
     const double factor = M_PI / static_cast<double>(block_size);
@@ -24,7 +23,6 @@ vector<short> idct(const vector<double>& dct_coeffs, int block_size) {
         }
         double sample = sum * sqrt(2.0 / block_size);
         
-        // Clamp to 16-bit range
         if (sample > 32767.0) sample = 32767.0;
         if (sample < -32768.0) sample = -32768.0;
         
@@ -47,13 +45,10 @@ int main(int argc, char *argv[]) {
     }
     BitStream ibs { ifs, STREAM_READ };
 
-    // Read header
     uint64_t num_frames = ibs.read_n_bits(32);
     uint64_t sample_rate = ibs.read_n_bits(32);
     uint64_t block_size = ibs.read_n_bits(16);
     uint64_t discarded_samples = ibs.read_n_bits(16);
-    
-    // Read quantization step
     uint64_t quant_high = ibs.read_n_bits(32);
     uint64_t quant_low = ibs.read_n_bits(32);
     uint64_t quant_bits = (quant_high << 32) | quant_low;
@@ -73,7 +68,6 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    // Create output WAV file
     int format = SF_FORMAT_WAV | SF_FORMAT_PCM_16;
     SndfileHandle sfhOut { argv[2], SFM_WRITE, format, 1, static_cast<int>(sample_rate) };
     
@@ -86,42 +80,22 @@ int main(int argc, char *argv[]) {
     size_t total_blocks = (num_frames + block_size - 1) / block_size;
     size_t kept_coeffs = block_size - discarded_samples;
     vector<short> all_samples;
-
-    // Process each block
     for (size_t b = 0; b < total_blocks; b++) {
         vector<double> dct_coeffs(block_size, 0.0);
-        
-        // Read quantized DCT coefficients
         for (size_t i = 0; i < kept_coeffs; i++) {
-            // Read sign bit
             int sign_bit = ibs.read_bit();
-            
-            // Read absolute value (16 bits)
             uint16_t abs_val = ibs.read_n_bits(16);
-            
-            // Reconstruct value
             int32_t val = static_cast<int32_t>(abs_val);
             if (sign_bit) val = -val;
-            
-            // Dequantize
             dct_coeffs[i] = static_cast<double>(val) * quant_step;
         }
-        
-        // Discarded coefficients remain 0
-        
-        // Apply Inverse DCT
+
         vector<short> block_samples = idct(dct_coeffs, block_size);
-        
-        // Add to output
         all_samples.insert(all_samples.end(), block_samples.begin(), block_samples.end());
     }
 
-    // Trim to original size
     all_samples.resize(num_frames);
-
-    // Write to output
     sfhOut.writef(all_samples.data(), num_frames);
-    
     ibs.close();
 
     cout << "Decoding completed successfully.\n";
