@@ -61,15 +61,10 @@ int main(int argc, char *argv[]) {
         );
         
         for(size_t i = 0; i < samples_to_read; i++) {
-            int64_t read_value = ibs.read_n_bits(bits_to_keep);
+            uint16_t quantized_value = ibs.read_n_bits(bits_to_keep);
             
-            if (read_value == -1) {
-                cerr << "Error: unexpected end of file while reading samples\n";
-                return 1;
-            }
-            
-            uint16_t quantized_value = static_cast<uint16_t>(read_value);
             uint16_t unsigned_sample = quantized_value << bits_to_remove;
+            
             samples[i] = static_cast<short>(unsigned_sample - 32768);
         }
         
