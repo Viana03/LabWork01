@@ -2,7 +2,7 @@
 
 This project implements various audio processing tools including histogram analysis, quantization, audio effects, and lossy compression using DCT (Discrete Cosine Transform)
 
-[LabWork01 Report](https://github.com/Viana03/LabWork01/blob/main/Lab01_Report.docx)
+[LabWork01 Report](https://github.com/Viana03/LabWork01/blob/main/Lab01_Report.pdf)
 
 ## Building the Project
 
