@@ -4,8 +4,6 @@ This project implements various audio processing tools including histogram analy
 
 [LabWork01 Report](https://github.com/Viana03/LabWork01/blob/main/Lab01_Report.pdf)
 
-All participants contributed equally.
-
 ## Building the Project
 
 ```bash
